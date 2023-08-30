@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>타임리프 사용하기</title>
+<link rel="stylesheet" type="text/css" th:href="@{./css/thymeleaf.css}">
+</head>
+<body>
+<th:block th:insert="~{/menu.html :: menu}"></th:block>
+<h1>lastaug입니다.</h1>
+<div></div>
+<span th:text="${text}">출력안됩니다.</span>
+[[${html}]]
+<span th:utext="${html}"></span>
+[(${html})]
+<script>
+let text = [[${text}]];
+</script>
+<hr>
+<a th:href="@{./main}">naver</a>
+<a href="./detail?bno=10">title</a>
+<a th:href="@{./detail(bno=${bno})}">title</a>
+<a th:href="@{./detail(bno=${bno}, user=150)}">title</a>
+
+<span th:with="name=홍길동" th:text="${name}">여기에 이름이 들어가요.</span> 
+<!-- 선언하고 바로써야 됩니다. 따로따로 놀면 안되요.
+	name=...	></span>
+	text=... 	></span> 두 줄로 쓰는거 안되요... -->
+<hr>
+
+<!-- [[${bno==20}]] -->
+<!-- [[${bno gt 20}]] -->
+[[${bno lt 20}]]
+[[${bno != 20}]]
+
+<hr>
+
+<span th:if="${bno == 20}" th:text="bno는 20입니다."></span>
+<span th:if="${bno != 20}" th:text="'bno는 20이 아닙니다.'"></span>
+
+<hr>
+[[${list}]]
+
+<ul th:each="e : ${list}">
+	<li th:text="${e}">
+		
+	</li>
+</ul>
+
+</body>
+</html>

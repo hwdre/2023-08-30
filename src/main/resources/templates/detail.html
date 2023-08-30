@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>detail</title>
+<link rel="stylesheet" type="text/css" th:href="@{./css/thymeleaf.css}">
+</head>
+<body>
+<th:block th:insert="~{/menu.html :: menu}"></th:block>
+<h1>디테일입니다.</h1>
+<div>
+	번호: [[${detail.bno}]]<br>
+	제목: [[${detail.btitle}]]<br>
+	글쓴이: [[${detail.m_name}]]<br>
+	날짜: [[${detail.bdate}]]<br>
+	내용: [[${detail.bcontent}]]<br>
+</div>
+<button th:onclick="|location.href='@{/board}'|">게시판</button>
+
+<th:block th:insert="~{/menu.html :: footer}"></th:block>
+</body>
+</html>

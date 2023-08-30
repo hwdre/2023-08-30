@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>board</title>
+<link rel="stylesheet" type="text/css" th:href="@{./css/board.css}">
+<link rel="stylesheet" type="text/css" th:href="@{./css/thymeleaf.css}">
+</head>
+<body>
+<th:block th:insert="~{/menu.html :: menu}"></th:block>
+<h1>보드입니다.</h1>
+<table>
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>이름</th>
+		<th>좋아요</th>
+		<th>가입일</th>
+	</tr>
+	<tr th:each="row: ${list}">
+		<td th:text="${row.bno}"></td>
+		<td th:onclick="|location.href='@{./detail(bno=${row.bno})}'|">[[${row.btitle}]]<small>[[${row.commentcount}]]</small></td>
+		<td th:text="${row.m_name}"></td>
+		<td th:text="${row.blike}"></td>
+		<td th:text="${row.bdate}"></td>
+	</tr>
+</table>
+</body>
+</html>
